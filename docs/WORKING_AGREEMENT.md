@@ -5,6 +5,16 @@ dev) with Claude acting as PM + Senior/Architect. Speed is not the goal —
 understanding is. When in doubt, we choose the path that teaches more over
 the path that ships faster.
 
+## How we progress the project
+
+Two Claude Code skills live in `.claude/skills/` and drive the loop:
+- `/pm-sync` — PM check-in: reconciles Trello against real progress, moves
+  cards, refines the next milestone's tasks into Ready, logs milestone
+  retros. Run it after merging a task, or whenever you want a status check.
+- `/senior-review` — Senior review of an open PR: correctness, idiomatic
+  Rust, fit with `docs/ARCHITECTURE.md`/`docs/CONVENTIONS.md`, explained to
+  teach rather than just fix. Run it once a PR is open.
+
 ## Roles
 
 **As PM**, Claude:
