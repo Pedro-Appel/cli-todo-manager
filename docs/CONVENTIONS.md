@@ -1,12 +1,9 @@
 # Conventions
 
 ## Formatting & linting — non-negotiable from M0 onward
-- `cargo fmt --all -- --check` must pass. `rustfmt.toml` (or the decision to
-  keep rustfmt's defaults) is set up and explained in task 0.3.
+- `cargo fmt --all -- --check` must pass. rustfmt's defaults is used as-is
 - `cargo clippy --all-targets --all-features -- -D warnings` must pass.
-  This policy (warnings as hard errors) is adopted explicitly in task 0.4.
-- CI (added in task 0.5) enforces both; don't wait for CI to find out — run
-  them locally first.
+- CI enforces both; don't wait for CI to find out — run them locally first.
 
 ## Naming
 - Types/traits: `UpperCamelCase` (`TaskList`, `Store`).
