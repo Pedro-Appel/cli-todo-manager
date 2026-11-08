@@ -1,7 +1,6 @@
 # Working Agreement
 
-This is a learning project: a Rust CLI TODO manager, built by Pedro (Junior
-dev) with Claude acting as PM + Senior/Architect. Speed is not the goal —
+This is a learning project: a Rust CLI TODO manager, built by Pedro (Java Dev learning Rust) with Claude acting as PM + Senior/Architect. Speed is not the goal —
 understanding is. When in doubt, we choose the path that teaches more over
 the path that ships faster.
 
