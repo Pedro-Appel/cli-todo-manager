@@ -14,11 +14,18 @@ jobs:
     name: Check
     runs-on: ubuntu-latest
     steps:
-      - uses: dtolnay/rust-toolchain@683b588c487a69d01f6c6ddf40f036ff682cc2c8
-      - name: Run Lint
-        run: cargo fmt --all -- --check && cargo clippy --all-targets --all-features -- -D warnings
-      - name: Run tests
-        run: cargo test --verbose
-      - name: Build
-        run: cargo build --verbose
-      
+    # Build the Rust toolchain with Clippy and Format
+    - name: rustup toolchain install
+      uses: dtolnay/rust-toolchain@stable
+      with:
+        components: cargo,clippy
+    # Checkout to the repository to run the tests
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+    - name: Run Clippy
+      run: cargo clippy --all-targets --all-features -- -D warnings
+    - name: Run Format
+      run: cargo fmt --all -- --check
+    - name: Run tests
+      run: cargo test --verbose
+    - name: Build
+      run: cargo build --verbose
