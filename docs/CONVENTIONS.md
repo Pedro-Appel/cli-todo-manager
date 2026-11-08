@@ -1,7 +1,7 @@
 # Conventions
 
 ## Formatting & linting — non-negotiable from M0 onward
-- `cargo fmt --all -- --check` must pass. rustfmt's defaults is used as-is
+- `cargo fmt --all -- --check` must pass. rustfmt's defaults are used as-is
 - `cargo clippy --all-targets --all-features -- -D warnings` must pass.
 - CI enforces both; don't wait for CI to find out — run them locally first.
 

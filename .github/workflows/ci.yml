@@ -1,6 +1,8 @@
 name: CI
 
 on:
+  push:
+    branches: [main]
   pull_request:
     branches: [main]
 
@@ -8,16 +10,15 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  backend:
-    name: Backend — build & test
+  cli:
+    name: Check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1  
-      - name: Build
-        run: cargo build --verbose
+      - uses: dtolnay/rust-toolchain@683b588c487a69d01f6c6ddf40f036ff682cc2c8
+      - name: Run Lint
+        run: cargo fmt --all -- --check && cargo clippy --all-targets --all-features -- -D warnings
       - name: Run tests
         run: cargo test --verbose
-      - name: Run format
-        run: cargo fmt
-      - name: Run Clippy
-        run: cargo clippy --all-targets --all-features -- -D warnings
+      - name: Build
+        run: cargo build --verbose
+      
