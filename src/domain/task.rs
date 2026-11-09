@@ -14,7 +14,7 @@ impl Task {
         expect(dead_code, reason = "Expected to be used in task 1.4")
     )]
     pub fn new(id: TaskId, title: String) -> Result<Task, String> {
-        if title.is_empty() {
+        if title.is_empty() || title.trim().is_empty() {
             return Err("Task title cannot be empty".into());
         }
         Ok(Task {
@@ -80,5 +80,8 @@ mod tests {
     fn invalid_task_title_should_have_error() {
         let result = Task::new(TaskId(1), "".to_string());
         assert!(!result.is_ok());
+
+        let result2 = Task::new(TaskId(1), "        ".to_string());
+        assert!(!result2.is_ok());
     }
 }
