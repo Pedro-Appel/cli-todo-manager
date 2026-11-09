@@ -1,4 +1,4 @@
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct TaskId(u32);
 
 #[derive(Debug, PartialEq, Eq)]
@@ -29,23 +29,23 @@ impl Task {
         expect(dead_code, reason = "Expected to be used in task 1.4")
     )]
     pub fn id(&self) -> TaskId {
-        self.id.clone()
+        self.id
     }
 
     #[cfg_attr(
         not(test),
         expect(dead_code, reason = "Expected to be used in task 1.4")
     )]
-    pub fn title(&self) -> String {
-        self.title.clone()
+    pub fn title(&self) -> &str {
+        &self.title
     }
 
     #[cfg_attr(
         not(test),
         expect(dead_code, reason = "Expected to be used in task 1.4")
     )]
-    pub fn is_done(&self) -> bool {
-        self.done
+    pub fn is_done(&self) -> &bool {
+        &self.done
     }
 
     #[cfg_attr(
