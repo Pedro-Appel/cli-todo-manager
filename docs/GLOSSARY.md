@@ -72,3 +72,14 @@ Conditional compilation: the `mod tests` block exists only when running
 `cargo test`, so tests live next to the code (and can see private items via
 `use super::*`) without being shipped in the binary. Java's closest
 equivalent is the separate `src/test` tree, but without the visibility wall.
+
+## `Option<T>` vs `Result<T, E>`
+`Option` says "a value or nothing" (`Some`/`None`): use it when absence is
+normal and needs no explanation (e.g. "find a task by id"). `Result` says
+"a value or *why it failed*" (`Ok`/`Err`): use it when a caller may need to
+know the reason, like rejecting an invalid title. See: Rust Book ch. 6.1, 9.2.
+
+## Return small `Copy` types by value
+Borrow when the value is large or owns heap data (`&str` over `String`);
+return by value when it's `Copy` and tiny (`bool`, `u32`, a `Copy` newtype).
+`&bool` buys nothing, costs a pointer, and makes callers write `*x`.
