@@ -87,3 +87,19 @@ Learning focus: release engineering basics, shipping a binary crate.
 ## Retro log
 <!-- One short entry per milestone once it ships: what went well, what was
 confusing, what we'd change in pacing or scope. Keeps the plan honest. -->
+
+### M0 — Environment & Hello World (shipped 2026-11-08, PR #1)
+- **Went well:** quick turnaround on review feedback; kept strict
+  `-D warnings` and SHA-pinned actions; the first branch → PR → CI → review →
+  merge loop was completed end to end.
+- **Confusing:** CI took two review rounds. `cargo fmt` rewrites files
+  while `cargo fmt --all -- --check` can fail; a SHA-pinned action needs
+  explicit inputs (no toolchain name); the order must be checkout →
+  toolchain → cheap checks → test/build. All now in `docs/GLOSSARY.md`.
+- **Pacing/process change:** tasks 0.2–0.5 were bundled in one PR on a
+  differently named branch. From M1 on: one branch and PR per task, branch
+  name matches the card (`feature/1.1-task-model`), Conventional Commit
+  messages, and PR descriptions that justify open decisions. Bundling needs
+  agreeing up front.
+- **Open item:** never verified that the fmt check fails on bad input;
+  optional local check.

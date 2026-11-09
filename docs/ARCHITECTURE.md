@@ -18,8 +18,7 @@ tests/
   cli.rs        integration tests driving the compiled binary (assert_cmd)
 ```
 
-Only `main.rs` (that's task 0.2, via
-`cargo init`). Modules are added as the matching roadmap task is picked up.
+Modules are added as the matching roadmap task is picked up.
 Don't pre-create empty modules; let the tree grow with the code that needs
 it.
 
