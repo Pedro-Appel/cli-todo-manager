@@ -9,7 +9,10 @@ struct Task {
 }
 
 impl Task {
-    #[cfg_attr(not(test), expect(dead_code,reason = "Expected to be used in task 1.4"))]
+    #[cfg_attr(
+        not(test),
+        expect(dead_code, reason = "Expected to be used in task 1.4")
+    )]
     pub fn new(id: TaskId, title: String) -> Result<Task, String> {
         if title.is_empty() {
             return Err("Task title cannot be empty".into());
@@ -20,23 +23,35 @@ impl Task {
             done: false,
         })
     }
-    
-    #[cfg_attr(not(test), expect(dead_code,reason = "Expected to be used in task 1.4"))]
+
+    #[cfg_attr(
+        not(test),
+        expect(dead_code, reason = "Expected to be used in task 1.4")
+    )]
     pub fn id(&self) -> TaskId {
         self.id.clone()
     }
 
-    #[cfg_attr(not(test), expect(dead_code,reason = "Expected to be used in task 1.4"))]
+    #[cfg_attr(
+        not(test),
+        expect(dead_code, reason = "Expected to be used in task 1.4")
+    )]
     pub fn title(&self) -> String {
         self.title.clone()
     }
 
-    #[cfg_attr(not(test), expect(dead_code,reason = "Expected to be used in task 1.4"))]
+    #[cfg_attr(
+        not(test),
+        expect(dead_code, reason = "Expected to be used in task 1.4")
+    )]
     pub fn is_done(&self) -> bool {
         self.done
     }
 
-    #[cfg_attr(not(test), expect(dead_code,reason = "Expected to be used in task 1.4"))]
+    #[cfg_attr(
+        not(test),
+        expect(dead_code, reason = "Expected to be used in task 1.4")
+    )]
     pub fn complete(&mut self) {
         self.done = true;
     }
