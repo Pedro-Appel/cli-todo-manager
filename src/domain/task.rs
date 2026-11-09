@@ -8,13 +8,13 @@ pub struct Task {
     done: bool,
 }
 
+#[cfg_attr(
+    not(test),
+    expect(dead_code, reason = "Expected to be used in task 1.4")
+)]
 impl Task {
-    #[cfg_attr(
-        not(test),
-        expect(dead_code, reason = "Expected to be used in task 1.4")
-    )]
     pub fn new(id: TaskId, title: String) -> Result<Self, String> {
-        if title.is_empty() || title.trim().is_empty() {
+        if title.trim().is_empty() {
             return Err("Task title cannot be empty".into());
         }
         Ok(Task {
@@ -24,34 +24,18 @@ impl Task {
         })
     }
 
-    #[cfg_attr(
-        not(test),
-        expect(dead_code, reason = "Expected to be used in task 1.4")
-    )]
     pub fn id(&self) -> TaskId {
         self.id
     }
 
-    #[cfg_attr(
-        not(test),
-        expect(dead_code, reason = "Expected to be used in task 1.4")
-    )]
     pub fn title(&self) -> &str {
         &self.title
     }
 
-    #[cfg_attr(
-        not(test),
-        expect(dead_code, reason = "Expected to be used in task 1.4")
-    )]
-    pub fn is_done(&self) -> &bool {
-        &self.done
+    pub fn is_done(&self) -> bool {
+        self.done
     }
 
-    #[cfg_attr(
-        not(test),
-        expect(dead_code, reason = "Expected to be used in task 1.4")
-    )]
     pub fn complete(&mut self) {
         self.done = true;
     }
